@@ -324,14 +324,14 @@ export function AppProvider({ children }) {
         try {
             const res = await api.post("/cms/news", news);
             setNewsItems(prev => [res.data, ...prev]);
-            notify("News added", "ok", true);
+            notify("News story published successfully!", "ok");
         } catch (e) { notify("Error adding news", "err"); }
     }
     async function editNews(item) {
         try {
             const res = await api.put(`/cms/news/${item.id}`, item);
             setNewsItems(prev => prev.map(n => n.id === res.data.id ? res.data : n));
-            notify("News story updated", "ok", true);
+            notify("News story updated successfully!", "ok");
         } catch (e) { notify("Error updating news", "err"); }
     }
     async function removeNews(id) {
