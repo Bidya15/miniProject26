@@ -1,0 +1,260 @@
+/* NetworkingHub: Professional & Modern Styles */
+
+.hubContainer {
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ─── Hub Header ─────────────────────────────────────── */
+.hubHeader {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.hubTitle {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--gray-800);
+    margin-bottom: 12px;
+    letter-spacing: -0.025em;
+}
+
+.hubSubtitle {
+    font-size: 17px;
+    color: var(--gray-500);
+    max-width: 600px;
+    margin: 0 auto 32px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.alumniActions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+/* ─── Hub Sections ───────────────────────────────────── */
+.hubSection {
+    margin-bottom: 80px;
+}
+
+.sectionHeader {
+    margin-bottom: 32px;
+    border-left: 4px solid var(--indigo);
+    padding-left: 20px;
+}
+
+.sectionTitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin-bottom: 4px;
+}
+
+.sectionDesc {
+    font-size: 15px;
+    color: var(--gray-400);
+    font-weight: 500;
+}
+
+/* ─── Unified Grid System ──────────────────────────────── */
+.unifiedGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* ─── Generic Card Styling ─── */
+.networkCard,
+.programCard,
+.webinarCard {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 24px;
+    border: 1px solid var(--border-lt);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+.networkCard:hover,
+.programCard:hover,
+.webinarCard:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border);
+}
+
+.cardInfo {
+    margin-bottom: 20px;
+}
+
+/* Specific Card Text Styles */
+.alumniName,
+.programTitle,
+.webinarTitle {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 6px;
+}
+
+.alumniRole,
+.mentorName,
+.webinarMeta {
+    font-size: 14px;
+    color: var(--gray-500);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.alumniLocation,
+.mentorExpertise {
+    font-size: 13px;
+    color: var(--gray-400);
+    font-weight: 500;
+}
+
+/* ─── Action Buttons ─── */
+.connectBtn,
+.mentorshipBtn,
+.webinarBtn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.connectBtn {
+    background: var(--indigo);
+    color: #fff;
+    border: none;
+}
+
+.connectBtn:hover {
+    background: var(--indigo-d);
+}
+
+.mentorshipBtn {
+    background: var(--gray-50);
+    color: var(--gray-700);
+    border: 1px solid var(--border);
+}
+
+.mentorshipBtn:hover {
+    background: var(--blue-l);
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.webinarBtn {
+    background: var(--surface);
+    color: var(--indigo);
+    border: 1.5px solid var(--indigo);
+}
+
+.webinarBtn:hover {
+    background: var(--indigo);
+    color: #fff;
+}
+
+.emptyState {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background: var(--gray-50);
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    color: var(--gray-400);
+    font-weight: 500;
+}
+
+/* ─── Carousel Styles ──────────────────────────────────── */
+.carouselWrapper {
+    position: relative;
+    margin-bottom: 24px;
+    padding: 0 45px;
+}
+
+.scrollBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--gray-700);
+    font-size: 18px;
+}
+
+.scrollBtn:hover {
+    background: var(--gray-50);
+    color: var(--indigo);
+    box-shadow: var(--shadow-lg);
+}
+
+.scrollBtnLeft { left: 0; }
+.scrollBtnRight { right: 0; }
+
+.alumniGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hubContainer {
+        padding: 16px;
+    }
+
+    .hubTitle {
+        font-size: 26px;
+    }
+
+    .hubSubtitle {
+        font-size: 15px;
+        margin-bottom: 24px;
+    }
+
+    .carouselWrapper {
+        padding: 0;
+    }
+
+    .scrollBtn {
+        display: none;
+    }
+
+    .alumniGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .sectionHeader {
+        padding-left: 14px;
+        margin-bottom: 20px;
+    }
+
+    .sectionTitle {
+        font-size: 19px;
+    }
+
+    .unifiedGrid {
+        grid-template-columns: 1fr;
+    }
+}

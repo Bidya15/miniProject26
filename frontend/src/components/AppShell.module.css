@@ -1,0 +1,140 @@
+/* ─── App Shell Layout ─────────────────────────────── */
+.appShell {
+    display: flex;
+    min-height: 100vh;
+}
+
+.mainContent {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: margin-left 0.25s ease;
+}
+
+.sidebarCollapsed .mainContent {
+    margin-left: 0;
+}
+
+@media (max-width: 1024px) {
+    .mainContent {
+        margin-left: 0 !important;
+    }
+}
+
+/* Top Header */
+.topHeader {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 28px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 640px) {
+    .topHeader {
+        padding: 0 16px;
+    }
+
+    .topHeaderLeft h1 {
+        font-size: 15px;
+    }
+
+    .topHeaderLeft p {
+        display: none;
+    }
+
+    .dateText {
+        display: none;
+    }
+}
+
+.topHeaderLeft h1 {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.topHeaderLeft p {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: 1px;
+}
+
+.topHeaderRight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dateText {
+    font-size: 12px;
+    color: var(--gray-400);
+}
+
+.themeBtn {
+    background: var(--gray-100);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.15s;
+}
+
+.themeBtn:hover {
+    background: var(--gray-200);
+}
+
+/* Page Body */
+.pageBody {
+    padding: 24px 28px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 11px 18px;
+    border-radius: var(--r-sm);
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    box-shadow: var(--shadow-md);
+    animation: slideUp 0.2s ease;
+}
+
+.toastOk {
+    background: #d1fae5;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+
+.toastErr {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(12px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,305 @@
+/* ─── Auth shared styles ─── */
+.authOuter {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #1e3a5f 100%);
+}
+
+.authCard {
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.authBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.authBrandIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-md);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.authTitle {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gray-900);
+}
+
+.authSub {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-top: 3px;
+}
+
+.methodSelector {
+    display: flex;
+    background: var(--gray-100);
+    border-radius: var(--r-sm);
+    padding: 3px;
+    margin: 20px 0;
+    gap: 2px;
+}
+
+.methodBtn {
+    flex: 1;
+    padding: 7px;
+    border: none;
+    background: transparent;
+    border-radius: calc(var(--r-sm) - 2px);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--gray-600);
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.methodBtn.active {
+    background: var(--surface);
+    color: var(--indigo);
+    box-shadow: var(--shadow-sm);
+}
+
+.togglePassBtn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--gray-400);
+    padding: 4px;
+    line-height: 1;
+}
+
+.forgotPassRow {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.otpHint {
+    font-size: 13px;
+    color: var(--gray-400);
+    margin-bottom: 10px;
+}
+
+.otpActions {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.sep {
+    color: var(--gray-300);
+}
+
+.roleTabs {
+    display: flex;
+    background: var(--gray-100);
+    border-radius: var(--r-sm);
+    padding: 3px;
+    margin-bottom: 20px;
+    gap: 2px;
+}
+
+.roleTab {
+    flex: 1;
+    padding: 7px;
+    border: none;
+    background: transparent;
+    border-radius: calc(var(--r-sm) - 2px);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--gray-500);
+    transition: all 0.15s;
+}
+
+.roleTab.active {
+    background: var(--surface);
+    color: var(--indigo);
+    box-shadow: var(--shadow-sm);
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.formLabel {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-500);
+    margin-bottom: 5px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.inp {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: var(--r-sm);
+    color: var(--gray-900);
+    background: var(--surface);
+    font-size: 14px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.inp:focus {
+    outline: none;
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.errBox {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    border-radius: var(--r-sm);
+    padding: 9px 13px;
+    font-size: 13px;
+    margin-bottom: 13px;
+}
+
+.infoBox {
+    background: var(--indigo-l);
+    color: var(--indigo-d);
+    border: 1px solid #a5b4fc;
+    border-radius: var(--r-sm);
+    padding: 9px 13px;
+    font-size: 12px;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.btnPrimary {
+    background: var(--indigo);
+    color: #fff;
+    border: 1.5px solid var(--indigo);
+    padding: 9px 18px;
+    border-radius: var(--r-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 16px;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.btnPrimary:hover {
+    background: var(--indigo-d);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+}
+
+.btnPrimary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--gray-100);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    color: var(--gray-500);
+    line-height: 1;
+}
+
+.demoRow {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 2px 0;
+    font-size: 13px;
+}
+
+.registerLink {
+    text-align: center;
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-top: 8px;
+}
+
+.linkBtn {
+    background: none;
+    border: none;
+    color: var(--indigo);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+
+.demoLabel {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.clickFill {
+    color: var(--indigo-d);
+    font-weight: 700;
+}
+
+/* ─── Social / Google Login ─── */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    color: var(--gray-400);
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.divider span {
+    padding: 0 12px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.googleBox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
+}

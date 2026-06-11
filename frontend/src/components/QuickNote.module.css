@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    align-items: stretch;
+    height: 48px;
+    background: #f3f4f6;
+    margin: 15px auto;
+    overflow: hidden;
+    width: 94%;
+    max-width: 1400px;
+    border: 1px solid #e2e8f0;
+    border-radius: 50px;
+    position: sticky;
+    top: 86px;
+    /* Below PublicNav which is ~76px + some margin */
+    z-index: 95;
+    /* Just below Navbar's 100 to feel layered if they overlap */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.labelWrapper {
+    background: #c2185b;
+    /* Deep red from AEC primary styles */
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    white-space: nowrap;
+    position: relative;
+    z-index: 10;
+    box-shadow: 6px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.label {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.marqueeWrapper {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 25px;
+    /* Gap between label and text */
+}
+
+.marqueeTrack {
+    display: flex;
+    width: max-content;
+    animation: scrollHorizontal 40s linear infinite;
+}
+
+.marqueeTrack:hover {
+    animation-play-state: paused;
+}
+
+.marqueeContent {
+    display: flex;
+    align-items: center;
+}
+
+.noteItem {
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    /* More breathing room between items */
+    white-space: nowrap;
+}
+
+.dot {
+    color: #c2185b;
+    margin-right: 12px;
+    margin-bottom: 2px;
+    font-size: 10px;
+}
+
+.noteText {
+    color: #374151;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.newBadgeImg {
+    width: 75px;
+    height: 35px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 12px;
+    filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.4));
+}
+
+@keyframes scrollHorizontal {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        height: 38px;
+    }
+
+    .labelWrapper {
+        padding: 0 15px;
+    }
+
+    .label {
+        font-size: 13px;
+    }
+
+    .noteText {
+        font-size: 13px;
+    }
+}

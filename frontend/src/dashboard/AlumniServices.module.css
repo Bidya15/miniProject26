@@ -1,0 +1,317 @@
+/* ─── Alumni Services CSS Module ──────────────────────── */
+
+.container {
+    padding: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+}
+
+.sub {
+    color: var(--gray-500);
+    font-size: 15px;
+}
+
+/* ─── Services Grid ───────────────────────────────────── */
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 32px;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--indigo-l);
+}
+
+.serviceBtn:hover {
+    background: var(--indigo);
+    border-color: var(--indigo);
+}
+
+.mainGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 32px;
+}
+
+.addBtnRow {
+    border: 2px dashed var(--gray-200);
+    background: transparent;
+    justify-content: center;
+    cursor: pointer;
+    padding: 16px;
+    margin-top: 12px;
+    transition: all 0.2s ease;
+}
+
+.addBtnRow:hover {
+    background: var(--indigo-l);
+    border-color: var(--indigo);
+    border-style: solid;
+}
+
+.addText {
+    font-weight: 600;
+    color: var(--indigo);
+}
+
+.cardTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cardDesc {
+    font-size: 14px;
+    color: var(--gray-500);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.cardBtnRow {
+    display: flex;
+    gap: 12px;
+}
+
+/* ─── ID Card Preview ─────────────────────────────────── */
+.idCardPreview {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    width: 340px;
+    height: 200px;
+    border-radius: 16px;
+    margin: 0 auto 24px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.idCardTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.idCardLogo {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.idCardChip {
+    width: 32px;
+    height: 24px;
+    background: linear-gradient(135deg, #fde68a, #d97706);
+    border-radius: 4px;
+}
+
+.idCardMain {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.idAvatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background: #334155;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    object-fit: cover;
+}
+
+.idInfo h4 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.idInfo p {
+    font-size: 11px;
+    opacity: 0.6;
+    margin: 2px 0 0;
+}
+
+.idCardBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 10px;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ─── Request Form ────────────────────────────────────── */
+.requestList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+}
+
+.requestItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.requestItem:last-child {
+    border-bottom: none;
+}
+
+.requestName {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.requestCost {
+    font-size: 13px;
+    color: var(--indigo);
+    font-weight: 700;
+}
+
+/* ─── Management Controls ─── */
+.serviceActions {
+    display: flex;
+    gap: 4px;
+    margin-left: 12px;
+}
+
+.actionBtn {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+    background: var(--indigo-l);
+    color: var(--indigo);
+    border-color: var(--indigo);
+}
+
+.actionBtn.del:hover {
+    background: var(--red-l);
+    color: var(--red);
+    border-color: var(--red);
+}
+
+/* ─── Responsive Styles ───────────────────────────────── */
+@media (max-width: 768px) {
+    .container {
+        padding: 16px;
+    }
+
+    .header {
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .sub {
+        font-size: 14px;
+    }
+
+    .mainGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card {
+        padding: 24px;
+        border-radius: 20px;
+    }
+
+    .idCardPreview {
+        width: 100%;
+        max-width: 320px;
+        height: 180px;
+        padding: 16px;
+    }
+
+    .idAvatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .idInfo h4 {
+        font-size: 14px;
+    }
+
+    .requestItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px 0;
+    }
+
+    .requestItem > div:last-child {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .requestItem button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardBtnRow {
+        flex-direction: column;
+    }
+}

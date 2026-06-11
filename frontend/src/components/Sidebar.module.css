@@ -1,0 +1,291 @@
+/* ─── Sidebar ────────────────────────────────────── */
+.sidebar {
+    width: var(--sidebar-w);
+    background: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    overflow: hidden;
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 260px;
+        transform: translateX(0);
+        box-shadow: 10px 0 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .sidebar.collapsed {
+        transform: translateX(-100%);
+        width: 260px;
+        /* Keep width fixed, just slide out */
+    }
+}
+
+/* ─── Collapsed state ─── */
+.collapsed {
+    width: 0;
+}
+
+/* ─── Floating expand arrow (shown when collapsed) ─── */
+.expandBtn {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--indigo);
+    color: #fff;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    width: 22px;
+    height: 48px;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 0 12px rgba(99, 102, 241, 0.35);
+    transition: background 0.15s, width 0.15s;
+}
+
+.expandBtn:hover {
+    background: var(--indigo-d, #4338ca);
+    width: 28px;
+}
+
+/* ─── Brand ─── */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 22px 20px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.brandIcon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.brandText {
+    flex: 1;
+    min-width: 0;
+}
+
+.brandName {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.3px;
+}
+
+.brandSub {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 1px;
+}
+
+.toggleBtn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: color 0.15s, background 0.15s;
+}
+
+.toggleBtn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Nav ─── */
+.section {
+    padding: 18px 12px 6px;
+    overflow-y: auto;
+    flex: 1;
+    white-space: nowrap;
+}
+
+.sectionLabel {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 8px;
+    margin-bottom: 4px;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    transition: all 0.15s;
+    margin-bottom: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.navItem:hover {
+    background: var(--sidebar-hover);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.navItem.active {
+    background: var(--sidebar-active);
+    color: #fff;
+    font-weight: 600;
+}
+
+.navIcon {
+    font-size: 16px;
+    opacity: 0.8;
+    flex-shrink: 0;
+}
+
+.navLabel {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.navBadge {
+    margin-left: auto;
+    background: var(--indigo);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: var(--r-full);
+    flex-shrink: 0;
+}
+
+/* ─── Footer ─── */
+.footer {
+    margin-top: auto;
+    padding: 16px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.userPill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.userPill:hover {
+    background: var(--sidebar-hover);
+}
+
+.userPillInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.userName {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.userRole {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.userAvatar {
+    flex-shrink: 0;
+}
+
+.signOutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    margin-top: 6px;
+    padding: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--r-sm);
+    color: rgba(255, 255, 255, 0.45);
+    transition: all 0.15s;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.signOutBtn:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.signOutLabel {
+    overflow: hidden;
+}
+
+/* ─── Backdrop ─── */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 90;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    .backdrop.active {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+}

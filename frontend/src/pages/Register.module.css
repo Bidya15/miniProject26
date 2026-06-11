@@ -1,0 +1,242 @@
+/* ─── Register Page ─────────────────────────────── */
+.authOuter {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #1e3a5f 100%);
+}
+
+.regCard {
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 560px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.authBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.authBrandIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-md);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.authTitle {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gray-900);
+}
+
+.authSub {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-top: 3px;
+}
+
+.roleTabs {
+    display: flex;
+    background: var(--gray-100);
+    border-radius: var(--r-sm);
+    padding: 3px;
+    margin-bottom: 20px;
+    gap: 2px;
+}
+
+.roleTab {
+    flex: 1;
+    padding: 7px;
+    border: none;
+    background: transparent;
+    border-radius: calc(var(--r-sm) - 2px);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--gray-500);
+    transition: all 0.15s;
+}
+
+.roleTab.active {
+    background: var(--surface);
+    color: var(--indigo);
+    box-shadow: var(--shadow-sm);
+}
+
+.regGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.formGroup {
+    margin-bottom: 0;
+}
+
+.formLabel {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-500);
+    margin-bottom: 5px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.labelMuted {
+    color: var(--gray-400);
+    font-weight: 400;
+}
+
+.inp {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: var(--r-sm);
+    color: var(--gray-900);
+    background: var(--surface);
+    font-size: 14px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.inp:focus {
+    outline: none;
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+textarea.inp {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.errBox {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    border-radius: var(--r-sm);
+    padding: 9px 13px;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+.infoBox {
+    background: var(--indigo-l);
+    color: var(--indigo-d);
+    border: 1px solid #a5b4fc;
+    border-radius: var(--r-sm);
+    padding: 9px 13px;
+    font-size: 12.5px;
+    margin-bottom: 14px;
+    font-weight: 500;
+}
+
+.btnRow {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.btnOutline {
+    background: var(--surface);
+    color: var(--gray-700);
+    border: 1.5px solid var(--gray-300);
+    padding: 9px 18px;
+    border-radius: var(--r-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btnOutline:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-400);
+}
+
+.btnPrimary {
+    flex: 1;
+    background: var(--indigo);
+    color: #fff;
+    border: 1.5px solid var(--indigo);
+    padding: 9px 18px;
+    border-radius: var(--r-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.btnPrimary:hover {
+    background: var(--indigo-d);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+}
+
+.closeBtn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--gray-100);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    color: var(--gray-500);
+    line-height: 1;
+}
+
+.demoCode {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+/* Success screen */
+.successCard {
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.successIcon {
+    font-size: 56px;
+}
+
+.successTitle {
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.successMsg {
+    font-size: 14px;
+    color: var(--gray-500);
+    margin: 10px 0 20px;
+}

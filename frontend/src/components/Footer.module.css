@@ -1,0 +1,256 @@
+.footer {
+    background: var(--sidebar-bg);
+    color: var(--gray-400);
+    padding: 80px 0 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ── FAQ in Footer ── */
+.faqSection {
+    margin-bottom: 80px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faqSectionTitle {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.faqList {
+    display: flex;
+    flex-direction: column;
+}
+
+.faqItem {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.2s;
+}
+
+.faqItem:last-child {
+    border-bottom: none;
+}
+
+.faqQuestion {
+    width: 100%;
+    padding: 24px 0;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: left;
+    transition: opacity 0.2s;
+}
+
+.faqQuestion:hover {
+    opacity: 0.8;
+}
+
+.faqIcon {
+    color: var(--indigo);
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.open .faqIcon {
+    transform: rotate(180deg);
+}
+
+.faqAnswer {
+    padding: 0 0 24px 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 60px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1.2fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.brand .logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.brand .desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+}
+
+.socials {
+    display: flex;
+    gap: 12px;
+}
+
+.socLink {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-400);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: relative;
+}
+
+.socLink svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+}
+
+.socLink:hover {
+    transform: translateY(-4px);
+}
+
+.socLink[data-platform*="linkedin"]:hover {
+    color: #0077b5;
+}
+
+.socLink[data-platform*="twitter"]:hover,
+.socLink[data-platform*="x"]:hover {
+    color: #1DA1F2;
+}
+
+.socLink[data-platform*="facebook"]:hover {
+    color: #1877f2;
+}
+
+.socLink[data-platform*="instagram"]:hover {
+    color: #E4405F;
+}
+
+.socLink[data-platform*="youtube"]:hover {
+    color: #ff0000;
+}
+
+.socLink[data-platform*="website"]:hover,
+.socLink[data-platform*="globe"]:hover {
+    color: var(--indigo);
+}
+
+.col h4 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.col button,
+.col a {
+    display: block;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    margin-bottom: 12px;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.15s;
+    text-align: left;
+    text-decoration: none;
+    line-height: 1.4;
+    font-family: inherit;
+}
+
+.miniMapWrap {
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.miniMapWrap iframe {
+    filter: grayscale(0.4) contrast(1.1) brightness(0.8);
+    transition: all 0.3s ease;
+}
+
+.miniMapWrap:hover iframe {
+    filter: grayscale(0) brightness(1);
+}
+
+.col button:hover,
+.col a:hover {
+    color: #fff;
+    text-decoration: underline;
+    /* Added for clarity on links */
+}
+
+.bottom {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .brand,
+    .col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col button,
+    .col a {
+        text-align: center;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+
+    .footer {
+        padding: 60px 0 30px 0;
+    }
+}

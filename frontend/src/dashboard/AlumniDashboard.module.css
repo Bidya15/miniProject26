@@ -1,0 +1,395 @@
+/* AlumniDashboard: Modern & Professional Styles */
+
+.dashboardWrapper {
+    padding: 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: transparent;
+}
+
+.dashboardContent {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+}
+
+.mainCol {
+    flex: 1;
+    min-width: 0;
+    /* Prevent overflow */
+}
+
+.sideCol {
+    width: 380px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 32px;
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid var(--border-lt);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sideCta {
+    margin-top: 12px;
+    padding: 14px;
+    background: var(--gray-50);
+    border-radius: 12px;
+    color: var(--indigo);
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px dashed var(--border);
+}
+
+.sideCta:hover {
+    background: var(--indigo-lt);
+    color: var(--indigo);
+    border-style: solid;
+}
+
+/* ─── Welcome Header ───────────────────────────────────── */
+.welcomeHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Balanced look */
+    margin-bottom: 40px;
+}
+
+.welcomeText {
+    flex: 1;
+}
+
+.greeting {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+}
+
+.userName {
+    color: var(--indigo);
+}
+
+.userRoleLine {
+    font-size: 16px;
+    color: var(--gray-500);
+    font-weight: 500;
+}
+
+.profileBtn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-600);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.profileBtn:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-300);
+    box-shadow: var(--shadow-md);
+}
+
+/* ─── Metrics Bar ──────────────────────────────────────── */
+.metricsBar {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-lt);
+}
+
+.metricItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.metricLabel {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    letter-spacing: 0.05em;
+}
+
+.metricValue {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-700);
+}
+
+.metricDivider {
+    width: 1px;
+    height: 40px;
+    background: var(--border-lt);
+}
+
+.statusActive {
+    color: #10b981;
+}
+
+/* ─── Features Grid ────────────────────────────────────── */
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.featureCard {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--border-lt);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+    box-shadow: var(--shadow-sm);
+}
+
+.featureCard:hover {
+    border-color: var(--border);
+    box-shadow: var(--shadow-lg);
+}
+
+.featureTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 10px;
+}
+
+.featureDesc {
+    font-size: 14px;
+    color: var(--gray-500);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.featureAction {
+    background: transparent;
+    border: none;
+    color: var(--indigo);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.featureAction:hover {
+    text-decoration: underline;
+    transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+    .dashboardContent {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .sideCol {
+        width: 100%;
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboardWrapper {
+        padding: 20px;
+    }
+
+    .welcomeHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .metricsBar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 24px;
+    }
+
+    .metricDivider {
+        display: none;
+    }
+
+    .featuresGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ─── Profile Completion ─── */
+.profileMeta {
+    width: 240px;
+}
+
+.completionWrapper {
+    cursor: pointer;
+    background: var(--gray-50);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-lt);
+    transition: all 0.2s;
+}
+
+.completionWrapper:hover {
+    border-color: var(--indigo);
+    background: var(--surface);
+}
+
+.completionLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.progressBar {
+    height: 6px;
+    background: var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--indigo), var(--blue));
+}
+
+/* ─── Quick Actions ─── */
+.quickActions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.actionPill {
+    background: var(--surface);
+    border: 1px solid var(--border-lt);
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-700);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+
+.actionPill:hover {
+    border-color: var(--indigo);
+    color: var(--indigo);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ─── Spotlight ─── */
+.spotlightSection {
+    margin-bottom: 48px;
+}
+
+.sectionHeading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin-bottom: 20px;
+}
+
+.spotlightGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.spotlightCard {
+    background: linear-gradient(135deg, var(--indigo), var(--blue));
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlightCard:hover {
+    transform: scale(1.02);
+}
+
+.spotlightCard::after {
+    content: "✨";
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    font-size: 80px;
+    opacity: 0.1;
+}
+
+.spotlightTag {
+    font-size: 10px;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+}
+
+.spotlightTitle {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 12px 0 8px;
+    line-height: 1.3;
+}
+
+.spotlightDesc {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.spotlightCard:hover .spotlightTitle {
+    text-decoration: underline;
+}
+
+.spotlightAuthor {
+    font-size: 13px;
+    font-weight: 600;
+    font-style: italic;
+    opacity: 0.8;
+}

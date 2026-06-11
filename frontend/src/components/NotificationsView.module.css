@@ -1,0 +1,161 @@
+/* ─── Notifications View CSS Module ─────────────── */
+
+.notifWrap {
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.notifHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 0 10px;
+}
+
+.notifTitle {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gray-900);
+}
+
+.notifSub {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-top: 2px;
+}
+
+.notifList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notifCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 18px;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+}
+
+.notifCard:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--indigo-l);
+}
+
+.notifCardUnread {
+    background: var(--gray-50);
+    border-left: 4px solid var(--indigo);
+}
+
+.notifRow {
+    display: flex;
+    gap: 16px;
+}
+
+.notifAvatarCol {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.unreadPulse {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    background: var(--indigo);
+    border-radius: 50%;
+    border: 2px solid var(--surface);
+}
+
+.notifBody {
+    flex: 1;
+}
+
+.notifHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.notifSender {
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--gray-900);
+}
+
+.notifTime {
+    font-size: 11px;
+    color: var(--gray-400);
+    font-weight: 500;
+}
+
+.notifMessage {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+.notifMetaBox {
+    display: flex;
+    gap: 6px;
+    margin: 10px 0;
+}
+
+.metaTag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    background: var(--gray-100);
+    color: var(--gray-600);
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.notifActions {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.btnReply {
+    color: var(--indigo);
+    padding: 0;
+}
+
+.btnIndigoLight {
+    background: var(--indigo-l);
+    color: var(--indigo);
+    border: none;
+}
+
+.btnIndigoLight:hover {
+    background: var(--indigo);
+    color: white;
+}
+
+/* Empty state */
+.emptyStateCard {
+    background: var(--surface);
+    border: 1px dashed var(--gray-300);
+    border-radius: var(--r-lg);
+    padding: 60px 40px;
+    text-align: center;
+    color: var(--gray-500);
+}
+
+.emptyIcon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.emptyStateCard h3 {
+    color: var(--gray-900);
+    margin-bottom: 8px;
+}
