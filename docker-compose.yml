@@ -35,19 +35,7 @@ services:
     depends_on:
       - backend
 
-  chat-server:
-    build: ./alumni-chat-server
-    container_name: alumni-chat-server
-    ports:
-      - "5000:5000"
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_NAME: alumni_portal
-      DB_USER: postgres
-      DB_PASSWORD: ${DB_PASSWORD:-password}
-    depends_on:
-      - db
+
 
 volumes:
   pgdata:

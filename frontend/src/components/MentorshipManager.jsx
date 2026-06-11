@@ -45,15 +45,7 @@ export default function MentorshipManager() {
                                             </div>
                                         </div>
                                         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                                            {req.status === 'ACCEPTED' && (
-                                                <button
-                                                    className="btn btn-primary btn-sm"
-                                                    style={{ padding: '2px 8px', fontSize: '11px' }}
-                                                    onClick={(e) => { e.stopPropagation(); setTab("messages"); }}
-                                                >
-                                                    💬 Message
-                                                </button>
-                                            )}
+
                                             <span className={`type-badge`} style={{
                                                 fontSize: '10px',
                                                 background: req.status === 'ACCEPTED' ? 'var(--men-bg)' : (req.status === 'REJECTED' ? 'var(--req-rej-bg)' : 'var(--req-pend-bg)'),
@@ -95,15 +87,7 @@ export default function MentorshipManager() {
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <div style={{ fontSize: '13px', fontWeight: 600 }}>{post.title}</div>
                                         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                                            {req.status === 'ACCEPTED' && (
-                                                <button
-                                                    className="btn btn-primary btn-sm"
-                                                    style={{ padding: '2px 8px', fontSize: '11px' }}
-                                                    onClick={(e) => { e.stopPropagation(); setTab("messages"); }}
-                                                >
-                                                    💬 Message
-                                                </button>
-                                            )}
+
                                             <span className={`type-badge`} style={{
                                                 fontSize: '10px',
                                                 background: req.status === 'ACCEPTED' ? 'var(--men-bg)' : (req.status === 'REJECTED' ? 'var(--req-rej-bg)' : 'var(--req-pend-bg)'),

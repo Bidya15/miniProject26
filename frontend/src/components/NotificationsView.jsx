@@ -149,11 +149,7 @@ function NotificationsView() {
                                                 </button>
                                             )}
 
-                                            {n.type === "NEW_MESSAGE" && (
-                                                <button className={`btn btn-ghost btn-sm ${s.btnReply}`} onClick={(e) => { e.stopPropagation(); setTab("messages"); }}>
-                                                    Reply to Message ?
-                                                </button>
-                                            )}
+
                                         </div>
                                     </div>
                                 </div>

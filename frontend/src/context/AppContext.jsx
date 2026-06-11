@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useEffect } from "react";
 import api from "../utils/api";
 import axios from "axios";
 import appLogoAsset from "../assets/image.png";
-import { io } from "socket.io-client";
 
 export const DEPARTMENTS = [
     "Civil Engineering",
@@ -87,8 +86,7 @@ export function AppProvider({ children }) {
         }
     }, [tab, page]);
     const [toast, setToast] = useState(null);
-    const [socket, setSocket] = useState(null);
-    const [onlineUsers, setOnlineUsers] = useState([]);
+
     const [eventRegistrations, setEventRegistrations] = useState([]);
 
     const [faqs, setFaqs] = useState([]);
@@ -161,7 +159,7 @@ export function AppProvider({ children }) {
 
     const [connections, setConnections] = useState([]);
     const [sentConnections, setSentConnections] = useState([]);
-    const [messages, setMessages] = useState([]);
+
     const [myNotifications, setMyNotifications] = useState([]);
     const [mentorshipRequests, setMentorshipRequests] = useState([]);
     const [careerRequests, setCareerRequests] = useState([]);
@@ -172,9 +170,7 @@ export function AppProvider({ children }) {
         ...sentConnections.filter(c => c.status === "ACCEPTED").map(c => c.receiver?.id)
     ].filter(id => id && id !== currentUser?.id);
 
-    const nodeApi = axios.create({
-        baseURL: import.meta.env.VITE_CHAT_SERVER_URL ? `${import.meta.env.VITE_CHAT_SERVER_URL}/api` : "http://localhost:5000/api"
-    });
+
 
     useEffect(() => {
         async function fetchCmsData() {
@@ -304,81 +300,7 @@ export function AppProvider({ children }) {
         fetchUserData();
     }, [currentUser]);
 
-    // real-time socket connection
-    useEffect(() => {
-        if (!currentUser) {
-            if (socket) {
-                socket.disconnect();
-                setSocket(null);
-            }
-            return;
-        }
 
-        const chatUrl = import.meta.env.VITE_CHAT_SERVER_URL || "http://127.0.0.1:5000";
-        const newSocket = io(chatUrl, {
-            transports: ["websocket"], // Try forcing websocket if polling fails
-            reconnectionAttempts: 5,
-        });
-        setSocket(newSocket);
-
-        newSocket.on("connect", () => {
-            console.log("Socket connected to server");
-            newSocket.emit("join", currentUser.id);
-        });
-
-        newSocket.on("connect_error", (err) => {
-            console.error("Socket Connection Error:", err.message);
-            // Don't toast for every retry, but log it
-        });
-
-        newSocket.on("online_users", (users) => {
-            setOnlineUsers(users);
-        });
-
-        newSocket.on("receive_message", (data) => {
-            // Add to messages if we're in the chat view or handle via notification
-            setMessages(prev => [...prev, data]);
-            notify(`New message!`);
-        });
-
-        newSocket.on("mentorship_update", (data) => {
-            const { type, request } = data;
-            if (type === "NEW_REQUEST") {
-                setMentorshipRequests(prev => [request, ...prev]);
-                notify(`New mentorship request received!`, "ok");
-            } else if (type === "STATUS_CHANGE") {
-                setMentorshipRequests(prev => prev.map(r => r.id === request.id ? request : r));
-                notify(`Mentorship request ${request.status.toLowerCase()}!`, request.status === "ACCEPTED" ? "ok" : "err");
-            }
-        });
-
-        newSocket.on("career_update", (data) => {
-            const { type, request } = data;
-            if (type === "NEW_REQUEST") {
-                setCareerRequests(prev => {
-                    if (request.applicant.id === currentUser.id) return [request, ...prev];
-                    return prev;
-                });
-                notify(`Someone ${request.requestType === "REFERRAL_REQUEST" ? "requested a referral" : "applied for your job"}!`, "ok");
-            } else if (type === "STATUS_CHANGE") {
-                setCareerRequests(prev => prev.map(r => r.id === request.id ? request : r));
-                notify(`Career request ${request.status.toLowerCase()}!`, request.status === "REFERRED" ? "ok" : "neutral");
-            }
-        });
-
-        newSocket.on("new_registration", (data) => {
-            if (currentUser.role === "ROLE_ADMIN" || currentUser.role === "ROLE_SUPER_ADMIN") {
-                setPendingAlumni(prev => {
-                    // Avoid duplicates if multiple socket events or re-fetches happen
-                    if (prev.find(p => p.id === data.id)) return prev;
-                    return [data, ...prev];
-                });
-                notify("New alumni registration pending approval!", "ok");
-            }
-        });
-
-        return () => newSocket.disconnect();
-    }, [currentUser]);
 
     async function updateGallery(newItem) {
         try {
@@ -931,19 +853,6 @@ export function AppProvider({ children }) {
         }
     }
 
-    /* ── Messaging ─────────────────────────────────────── */
-    async function sendMessage(receiverId, text) {
-        if (socket && socket.connected) {
-            socket.emit("send_message", {
-                senderId: currentUser.id,
-                receiverId,
-                message: text
-            });
-            // The socket will emit 'message_sent' or we can optimize local state here
-        } else {
-            notify("Chat server disconnected. Trying to reconnect...", "err");
-        }
-    }
 
     /* ── Notifications ─────────────────────────────────── */
     async function markNotificationRead(id) {
@@ -1157,7 +1066,7 @@ export function AppProvider({ children }) {
             eventRegistrations,
             fetchAdmins, admins, revokeAdminAccess, promoteAdmin, updateAdminDepartment, updateUserDepartment,
             deleteUser, deletePost, exportAlumni, bulkRegisterAlumni,
-            connections, messages, myNotifications, connectedAlumniIds, sentConnections,
+            connections, myNotifications, connectedAlumniIds, sentConnections,
             galleryImages, aboutContent, contactInfo, homeContent,
             newsItems, notableAlumni, givingInitiatives, alumniServices, messageDeskItems,
             faqs, socialLinks, footerConfig,
@@ -1165,7 +1074,7 @@ export function AppProvider({ children }) {
             updateNews, editNews, removeNews, updateNotableAlumni, editNotableAlumni, removeNotableAlumni, updateGiving, updateServices,
             updateMessageDesk, deleteMessageDesk,
             updateFaq, deleteFaq, updateSocialLink, deleteSocialLink, saveFooterConfig,
-            handleConnectionResponse, sendConnectionRequest, sendMessage,
+            handleConnectionResponse, sendConnectionRequest,
             markNotificationRead, clearNotifications,
             mentorshipRequests, sendMentorshipRequest, respondToMentorship,
             careerRequests, incomingCareerRequests, sendCareerRequest, respondToCareerRequest,

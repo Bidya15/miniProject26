@@ -5,7 +5,6 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import ChatView from "./ChatView";
 import NotificationsView from "./NotificationsView";
 import Gallery from "../pages/Gallery";
 import ForgotPassword from "../pages/ForgotPassword";
@@ -63,7 +62,6 @@ const PAGE_TITLE = {
         feed: { h: "Alumni Feed", sub: "Stay updated with latest posts and discussions" },
         "networking-hub": { h: "Networking Hub", sub: "Connect with fellow alumni, mentors, and faculty" },
         "job-portal": { h: "Job Portal", sub: "Find your next career opportunity" },
-        messages: { h: "Messages", sub: "Direct communication with your connections" },
         notifications: { h: "Notifications", sub: "Stay up to date with alerts" },
         giving: { h: "Giving Hub", sub: "Support university growth and institutional initiatives" },
         events: { h: "Events & Reunions", sub: "Stay updated with latest happenings" },
@@ -80,7 +78,7 @@ function renderTab(role, tab) {
         if (tab === "alumni-central") return <AlumniCentral />;
         if (tab === "events") return <ManageEvents />;
         if (tab === "export") return <Export />;
-        if (tab === "messages") return <ChatView />;
+
         if (tab === "notifications") return <NotificationsView />;
         if (tab === "content-management") return <ContentManagement />;
         if (tab === "profile") return <AdminProfile />;
@@ -88,7 +86,7 @@ function renderTab(role, tab) {
     }
     if (role === "ROLE_ADMIN") {
         // Strict guard: Dept Admins cannot access Super Admin tabs
-        const allowed = ["overview", "alumni-central", "events", "notifications", "profile", "email-campaign", "messages"];
+        const allowed = ["overview", "alumni-central", "events", "notifications", "profile", "email-campaign"];
         if (!allowed.includes(tab)) return <Overview />; // Default to safe overview
 
         if (tab === "overview") return <Overview />;
@@ -98,13 +96,13 @@ function renderTab(role, tab) {
         if (tab === "services") return <AlumniServices />;
         if (tab === "profile") return <AdminProfile />;
         if (tab === "email-campaign") return <EmailCampaign />;
-        if (tab === "messages") return <ChatView />;
+
     }
     if (role === "ROLE_ALUMNI") {
         if (tab === "dashboard") return <AlumniDashboard />;
         if (tab === "feed") return <AlumniFeed />;
         if (tab === "networking-hub") return <NetworkingHub />;
-        if (tab === "messages") return <ChatView />;
+
         if (tab === "notifications") return <NotificationsView />;
         if (tab === "events") return <EventsView />;
         if (tab === "profile") return <AlumniProfile />;

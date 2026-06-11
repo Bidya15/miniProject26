@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useApp, DEPARTMENTS } from "../context/AppContext";
 import { timeAgo, avatarColor, fmtDate, fmtDateTime, POST_TYPE_META } from "../utils/helpers";
 import AvatarImg from "../components/AvatarImg";
-import ChatView from "../components/ChatView";
 import NotificationsView from "../components/NotificationsView";
 import EventsPanel from "../components/EventsPanel";
 import NewPostModal from "../components/NewPostModal";
@@ -328,9 +327,6 @@ export function AlumniCard({ user }) {
                 <button className="btn btn-green btn-sm flex-1" disabled style={{ opacity: 0.8 }}>
                     ✓ Connected
                 </button>
-                <button className="btn btn-outline btn-sm flex-1" onClick={() => setTab("messages")}>
-                    💬 Chat
-                </button>
                 <a href={`mailto:${user.email}`} className="btn btn-outline btn-sm flex-1" title={`Send email to ${user.name}`}>
                     ✉️ Mail
                 </a>
@@ -636,7 +632,6 @@ function Profile() {
     const [subTab, setSubTab] = useState("overview");
 
     const unreadNotifs = myNotifications.filter(n => !n.read && n.type !== "NEW_MESSAGE").length;
-    const unreadMsgs = myNotifications.filter(n => !n.read && n.type === "NEW_MESSAGE").length;
     const fileInputRef = useRef(null);
     const [form, setForm] = useState({
         name: user.name || "",
@@ -727,7 +722,7 @@ function Profile() {
                 }}>
                     {[
                         { id: 'overview', label: 'Overview', icon: '👤' },
-                        { id: 'messages', label: 'Messages', icon: '💬', badge: unreadMsgs },
+
                         { id: 'notifications', label: 'Notifications', icon: '🔔', badge: unreadNotifs },
                         { id: 'connections', label: 'Connections', icon: '👥' },
                         { id: 'feedback', label: 'Feedback', icon: '💬' }
@@ -760,7 +755,7 @@ function Profile() {
                     ))}
                 </DraggableBox>
 
-                {subTab === "messages" && <ChatView />}
+
                 {subTab === "notifications" && <NotificationsView />}
                 {subTab === "connections" && <MyConnections />}
                 {subTab === "feedback" && <FeedbackView />}
