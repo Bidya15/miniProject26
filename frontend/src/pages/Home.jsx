@@ -269,18 +269,7 @@ function HeroSlider() {
     );
 }
 
-/* ── Demo Credentials ─────────────────────────────────────── */
-const DEMO = {
-    ALUMNI: [
-        { email: "alumni@aec.ac.in", pass: "password", branch: "Computer Science & Engineering" }
-    ],
-    ADMIN: [
-        { email: "cse@aec.ac.in", pass: "password", branch: "Computer Science & Engineering" }
-    ],
-    SUPER_ADMIN: [
-        { email: "superadmin@college.edu", pass: "SuperAdmin@123", branch: "" }
-    ]
-};
+
 
 /* ── Inline Login Panel ───────────────────────────────────── */
 function LoginPanel({ onClose }) {
@@ -401,17 +390,7 @@ function LoginPanel({ onClose }) {
                 </motion.button>
             </form>
 
-            <div className={styles.demoBlock}>
-                {DEMO[role] && DEMO[role].map(d => (
-                    <div
-                        key={d.email}
-                        onClick={() => { setEmail(d.email); setPass(d.pass); setBranch(d.branch || ""); }}
-                        className={styles.demoEmailRow}
-                    >
-                        📧 {d.email} <span className={styles.dimText}>(click to fill)</span>
-                    </div>
-                ))}
-            </div>
+
         </motion.div>
     );
 }
