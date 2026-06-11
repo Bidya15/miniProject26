@@ -73,7 +73,7 @@ public class AuthController {
                     }
                     return ResponseEntity.ok(authService.generateAuthResponse(user, true));
                 })
-                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Google login failed. If you are logging in as an Admin, your email must be pre-registered by the system.")));
     }
 
     @Deprecated

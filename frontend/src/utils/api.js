@@ -21,12 +21,14 @@ api.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-// Response interceptor: handle expired / invalid JWT (401)
 api.interceptors.response.use(
     (response) => response,
     (error) => {
         const status = error?.response?.status;
-        if (status === 401) {
+        const url = error?.config?.url;
+        
+        // Don't auto-redirect on auth endpoints (like login/register) so the UI can show the actual error message!
+        if (status === 401 && url && !url.includes("/auth/")) {
             // Token expired or invalid — clear session and redirect to home
             sessionStorage.removeItem("token");
             sessionStorage.removeItem("user");
