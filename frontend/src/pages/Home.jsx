@@ -7,6 +7,7 @@ import EventsPanel from "../components/EventsPanel";
 import QuickNote from "../components/QuickNote";
 import QuickWidgets from "../components/QuickWidgets";
 import MessageDesk from "../components/MessageDesk";
+import ImageUpload from "../components/ImageUpload";
 import api from "../utils/api";
 import styles from "./Home.module.css";
 
@@ -559,7 +560,7 @@ function CoordinatorsSection() {
                                 >
                                     <div className={styles.alumniAvatarWrapperMacbook}>
                                         <img
-                                            src={currentCoord.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop"}
+                                            src={currentCoord.imageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(currentCoord.name)}&size=400&background=random`}
                                             alt={currentCoord.name}
                                             className={styles.alumniAvatar}
                                             style={{ borderRadius: '16px' }}
@@ -619,8 +620,14 @@ function CoordinatorsSection() {
                                     <input className="inp" value={coordEdit.department} onChange={e => setCoordEdit({ ...coordEdit, department: e.target.value })} />
                                 </div>
                                 <div className="form-group">
-                                    <label className="form-label">Image URL</label>
-                                    <input className="inp" value={coordEdit.imageUrl} onChange={e => setCoordEdit({ ...coordEdit, imageUrl: e.target.value })} />
+                                    <label className="form-label">Coordinator Photo</label>
+                                    <ImageUpload
+                                        currentImage={coordEdit.imageUrl}
+                                        onImageChange={(url) => setCoordEdit({ ...coordEdit, imageUrl: url })}
+                                        label="Upload Photo"
+                                        maxSizeMB={2}
+                                        aspectRatio="square"
+                                    />
                                 </div>
                                 <div className="form-group">
                                     <label className="form-label">LinkedIn URL</label>
