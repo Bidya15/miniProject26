@@ -1,49 +1,37 @@
 import { useApp } from "../context/AppContext";
 import Sidebar from "./Sidebar";
+import Home from "../pages/Home";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import NotificationsView from "./NotificationsView";
+import Gallery from "../pages/Gallery";
+import ForgotPassword from "../pages/ForgotPassword";
+import Privacy from "../pages/Privacy";
+import Terms from "../pages/Terms";
 import styles from "./AppShell.module.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect } from "react";
 
-// ─── Lazy-loaded public pages ─────────────────────────
-const Home              = lazy(() => import("../pages/Home"));
-const About             = lazy(() => import("../pages/About"));
-const Contact           = lazy(() => import("../pages/Contact"));
-const Login             = lazy(() => import("../pages/Login"));
-const Register          = lazy(() => import("../pages/Register"));
-const Gallery           = lazy(() => import("../pages/Gallery"));
-const ForgotPassword    = lazy(() => import("../pages/ForgotPassword"));
-const Privacy           = lazy(() => import("../pages/Privacy"));
-const Terms             = lazy(() => import("../pages/Terms"));
+// ─── Admin sub-views ─────────────────────────────────
+import { Overview, Pending, ManageAlumni, ManagePosts, Export, AlumniCentral } from "../dashboard/Admin";
+import ManageEvents from "../cms/ManageEvents";
+import AdminProfile from "../dashboard/AdminProfile";
+import EmailCampaign from "../dashboard/EmailCampaign";
 
-// ─── Lazy-loaded shared components ───────────────────
-const NotificationsView = lazy(() => import("./NotificationsView"));
+// ─── Alumni sub-views ────────────────────────────────
+import AlumniDashboard from "../dashboard/AlumniDashboard";
+import NetworkingHub from "../dashboard/NetworkingHub";
+import JobPortal from "../dashboard/JobPortal";
+import { Feed as AlumniFeed, Profile as AlumniProfile } from "../dashboard/Alumni";
+import AlumniServices from "../dashboard/AlumniServices";
+import EventsView from "../dashboard/EventsView";
+import FeedbackView from "../dashboard/FeedbackView";
 
-// ─── Lazy-loaded Admin named exports ─────────────────
-// Admin.jsx uses named exports so we .then() to map each to default
-const Overview          = lazy(() => import("../dashboard/Admin").then(m => ({ default: m.Overview })));
-const AlumniCentral     = lazy(() => import("../dashboard/Admin").then(m => ({ default: m.AlumniCentral })));
-const Export            = lazy(() => import("../dashboard/Admin").then(m => ({ default: m.Export })));
-
-// ─── Lazy-loaded Admin-only pages ────────────────────
-const ManageEvents      = lazy(() => import("../cms/ManageEvents"));
-const AdminProfile      = lazy(() => import("../dashboard/AdminProfile"));
-const EmailCampaign     = lazy(() => import("../dashboard/EmailCampaign"));
-const ContentManagement = lazy(() => import("../cms/ContentManagement"));
-
-// ─── Lazy-loaded Super Admin named exports ────────────
-const ManageAdmins      = lazy(() => import("../dashboard/SuperAdmin").then(m => ({ default: m.ManageAdmins })));
-
-// ─── Lazy-loaded Alumni named exports ────────────────
-const AlumniFeed        = lazy(() => import("../dashboard/Alumni").then(m => ({ default: m.Feed })));
-const AlumniProfile     = lazy(() => import("../dashboard/Alumni").then(m => ({ default: m.Profile })));
-
-// ─── Lazy-loaded Alumni standalone pages ─────────────
-const AlumniDashboard   = lazy(() => import("../dashboard/AlumniDashboard"));
-const NetworkingHub     = lazy(() => import("../dashboard/NetworkingHub"));
-const JobPortal         = lazy(() => import("../dashboard/JobPortal"));
-const AlumniServices    = lazy(() => import("../dashboard/AlumniServices"));
-const EventsView        = lazy(() => import("../dashboard/EventsView"));
-const FeedbackView      = lazy(() => import("../dashboard/FeedbackView"));
+// ─── Super Admin sub-views ───────────────────────────
+import { ManageAdmins } from "../dashboard/SuperAdmin";
+import ContentManagement from "../cms/ContentManagement";
 
 // ─── Page titles ─────────────────────────────────────
 const PAGE_TITLE = {
@@ -82,29 +70,6 @@ const PAGE_TITLE = {
     },
 };
 
-// ─── Loading Spinner (shown while lazy chunks load) ───
-function TabSpinner() {
-    return (
-        <div style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            minHeight: "320px",
-            width: "100%",
-        }}>
-            <div style={{
-                width: "36px",
-                height: "36px",
-                border: "3px solid var(--gray-200, #e2e8f0)",
-                borderTopColor: "var(--indigo, #4f46e5)",
-                borderRadius: "50%",
-                animation: "spin 0.7s linear infinite",
-            }} />
-            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-        </div>
-    );
-}
-
 // ─── Tab router ──────────────────────────────────────
 function renderTab(role, tab) {
     if (role === "ROLE_SUPER_ADMIN") {
@@ -113,6 +78,7 @@ function renderTab(role, tab) {
         if (tab === "alumni-central") return <AlumniCentral />;
         if (tab === "events") return <ManageEvents />;
         if (tab === "export") return <Export />;
+
         if (tab === "notifications") return <NotificationsView />;
         if (tab === "content-management") return <ContentManagement />;
         if (tab === "profile") return <AdminProfile />;
@@ -130,11 +96,13 @@ function renderTab(role, tab) {
         if (tab === "services") return <AlumniServices />;
         if (tab === "profile") return <AdminProfile />;
         if (tab === "email-campaign") return <EmailCampaign />;
+
     }
     if (role === "ROLE_ALUMNI") {
         if (tab === "dashboard") return <AlumniDashboard />;
         if (tab === "feed") return <AlumniFeed />;
         if (tab === "networking-hub") return <NetworkingHub />;
+
         if (tab === "notifications") return <NotificationsView />;
         if (tab === "events") return <EventsView />;
         if (tab === "profile") return <AlumniProfile />;
@@ -165,7 +133,7 @@ const toastVariants = {
 // ─── App Shell ───────────────────────────────────────
 function AppShell() {
     const { page, currentUser, toast, tab, sidebarOpen, theme, toggleTheme } = useApp();
-    const { toggleSidebar } = useApp();
+    const { toggleSidebar } = useApp(); // Access toggleSidebar if needed, though it's used below
 
     // Always scroll to top on page or tab change
     useEffect(() => {
@@ -195,28 +163,26 @@ function AppShell() {
             </AnimatePresence>
 
             {isPublic ? (
-                <Suspense fallback={<TabSpinner />}>
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={page}
-                            variants={pageVariants}
-                            initial="initial"
-                            animate="enter"
-                            exit="exit"
-                            style={{ minHeight: "100vh" }}
-                        >
-                            {page === "HOME" && <Home />}
-                            {page === "ABOUT" && <About />}
-                            {page === "GALLERY" && <Gallery isPublic />}
-                            {page === "CONTACT" && <Contact />}
-                            {page === "LOGIN" && <Login />}
-                            {page === "REGISTER" && <Register />}
-                            {page === "FORGOT_PASSWORD" && <ForgotPassword />}
-                            {page === "PRIVACY" && <Privacy />}
-                            {page === "TERMS" && <Terms />}
-                        </motion.div>
-                    </AnimatePresence>
-                </Suspense>
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={page}
+                        variants={pageVariants}
+                        initial="initial"
+                        animate="enter"
+                        exit="exit"
+                        style={{ minHeight: "100vh" }}
+                    >
+                        {page === "HOME" && <Home />}
+                        {page === "ABOUT" && <About />}
+                        {page === "GALLERY" && <Gallery isPublic />}
+                        {page === "CONTACT" && <Contact />}
+                        {page === "LOGIN" && <Login />}
+                        {page === "REGISTER" && <Register />}
+                        {page === "FORGOT_PASSWORD" && <ForgotPassword />}
+                        {page === "PRIVACY" && <Privacy />}
+                        {page === "TERMS" && <Terms />}
+                    </motion.div>
+                </AnimatePresence>
             ) : (
                 <div className={`${styles.appShell}${sidebarOpen ? "" : ` ${styles.sidebarCollapsed}`}`}>
                     {/* ── Backdrop for Mobile ── */}
@@ -269,9 +235,7 @@ function AppShell() {
                                     animate="enter"
                                     exit="exit"
                                 >
-                                    <Suspense fallback={<TabSpinner />}>
-                                        {renderTab(role, tab)}
-                                    </Suspense>
+                                    {renderTab(role, tab)}
                                 </motion.div>
                             </AnimatePresence>
                         </div>
