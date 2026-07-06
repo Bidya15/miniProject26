@@ -301,6 +301,7 @@ function ManageAlumni() {
                     </button>
                 )}
             </div>
+            <div className="swipe-indicator">← Swipe table to see more →</div>
             <DraggableBox className="table-wrap">
                 <table>
                     <thead>
@@ -493,6 +494,8 @@ function ManagePosts() {
     }, []);
 
     return (
+        <>
+        <div className="swipe-indicator">← Swipe table to see more →</div>
         <DraggableBox className="table-wrap">
             <table>
                 <thead>
@@ -518,6 +521,7 @@ function ManagePosts() {
                 </tbody>
             </table>
         </DraggableBox>
+        </>
     );
 }
 

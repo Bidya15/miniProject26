@@ -168,6 +168,7 @@ export default function ManageEvents() {
                 </div>
             </form>
 
+            <div className="swipe-indicator">← Swipe table to see more →</div>
             <DraggableBox className={s.tableWrap}>
                 <table className={s.table}>
                     <thead>
@@ -264,6 +265,7 @@ export default function ManageEvents() {
                                 </form>
                             ) : null}
 
+                            <div className="swipe-indicator">← Swipe table to see more →</div>
                             <DraggableBox className={s.tableWrap}>
                                 <table className={s.table}>
                                     <thead>

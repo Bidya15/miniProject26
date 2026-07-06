@@ -74,6 +74,7 @@ export default function ContentManagement() {
                 </div>
             </div>
 
+            <div className="swipe-indicator">← Swipe to see more options →</div>
             <DraggableBox className={styles.cmNav}>
                 {SUB_TABS.map(tab => (
                     <button

@@ -211,6 +211,8 @@ function Feed({ isSuccessStories = false }) {
             />}
 
             {!isSuccessStories && (
+                <>
+                <div className="swipe-indicator">← Swipe to see more options →</div>
                 <DraggableBox className="profile-subnav" style={{
                     display: 'flex', gap: '32px', marginBottom: '24px',
                     borderBottom: '1px solid var(--gray-200)', padding: '0 8px'
@@ -240,6 +242,7 @@ function Feed({ isSuccessStories = false }) {
                         </motion.button>
                     ))}
                 </DraggableBox>
+                </>
             )}
 
             {subTab === "jobs" && !isSuccessStories ? (
@@ -275,6 +278,8 @@ function Feed({ isSuccessStories = false }) {
             )}
 
             {!isSuccessStories && (
+                <>
+                <div className="swipe-indicator">← Swipe to filter →</div>
                 <DraggableBox className="chips">
                     {activeFilters.map(f => (
                         <button key={f} className={`chip${filter === f ? " active" : ""}`} onClick={() => setFilter(f)}>
@@ -282,6 +287,7 @@ function Feed({ isSuccessStories = false }) {
                         </button>
                     ))}
                 </DraggableBox>
+                </>
             )}
 
             {visible.length === 0
@@ -715,7 +721,7 @@ function Profile() {
 
         return (
             <div className="profile-page-container">
-
+                <div className="swipe-indicator">← Swipe to see more options →</div>
                 <DraggableBox className="profile-subnav" style={{
                     display: 'flex', gap: '32px', marginBottom: '24px',
                     borderBottom: '1px solid var(--gray-200)', padding: '0 8px'

@@ -2779,3 +2779,24 @@ tr:hover td {
 [data-theme="dark"] .p-val {
   color: var(--gray-100);
 }
+
+.swipe-indicator {
+    display: none;
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .swipe-indicator {
+        display: block;
+        animation: pulseFade 2s infinite ease-in-out;
+    }
+}
+
+@keyframes pulseFade {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
