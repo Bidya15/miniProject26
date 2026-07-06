@@ -791,11 +791,28 @@ function TestimonialsSlider() {
                             style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
                         >
                             <div className={styles.testimonialAvatarWrap}>
-                                <img
-                                    src={currentCard.avatarUrl || "/aec_logo_v1.png"}
-                                    alt={currentCard.authorName}
-                                    className={styles.testimonialAvatar}
-                                />
+                                {currentCard.avatarUrl ? (
+                                    <img
+                                        src={currentCard.avatarUrl}
+                                        alt={currentCard.authorName}
+                                        className={styles.testimonialAvatar}
+                                    />
+                                ) : (
+                                    <div
+                                        className={styles.testimonialAvatar}
+                                        style={{
+                                            background: 'var(--indigo-l)',
+                                            color: 'var(--indigo-d)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            fontWeight: 'bold',
+                                            fontSize: '36px'
+                                        }}
+                                    >
+                                        {currentCard.authorName?.charAt(0)}
+                                    </div>
+                                )}
                                 <div className={styles.testimonialQuoteIcon}>❝</div>
                             </div>
                             <p className={styles.testimonialQuote}>{currentCard.content}</p>
