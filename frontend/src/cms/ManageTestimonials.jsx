@@ -127,7 +127,7 @@ export default function ManageTestimonials() {
                         {items.map(m => (
                             <tr key={m.id}>
                                 <td>
-                                    {m.avatarUrl && m.avatarUrl !== "/aec_logo_v1.png" && <img src={m.avatarUrl} alt={m.authorName} style={{ width: 40, height: 40, objectFit: "cover", borderRadius: "50%" }} />}
+                                    {m.avatarUrl && m.avatarUrl !== "/aec_logo_v1.webp" && <img src={m.avatarUrl} alt={m.authorName} style={{ width: 40, height: 40, objectFit: "cover", borderRadius: "50%" }} />}
                                 </td>
                                 <td>
                                     <div style={{ fontSize: 12, fontStyle: "italic", color: "var(--gray-600)" }}>"{m.content}"</div>

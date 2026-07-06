@@ -817,7 +817,7 @@ function TestimonialsSlider() {
                             style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
                         >
                             <div className={styles.testimonialAvatarWrap}>
-                                {currentCard.avatarUrl && currentCard.avatarUrl !== "/aec_logo_v1.png" ? (
+                                {currentCard.avatarUrl && currentCard.avatarUrl !== "/aec_logo_v1.webp" ? (
                                     <img
                                         src={currentCard.avatarUrl}
                                         alt={currentCard.authorName}
