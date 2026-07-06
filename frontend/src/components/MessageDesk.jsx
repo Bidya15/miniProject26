@@ -105,9 +105,11 @@ export default function MessageDesk() {
                         className={styles.messageContent}
                     >
                         <div className={styles.senderInfo}>
-                            <div className={styles.avatarWrapper}>
-                                <img src={currentMessage.imageUrl || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"} alt={currentMessage.senderName} className={styles.avatar} />
-                            </div>
+                            {currentMessage.imageUrl && (
+                                <div className={styles.avatarWrapper}>
+                                    <img src={currentMessage.imageUrl} alt={currentMessage.senderName} className={styles.avatar} />
+                                </div>
+                            )}
                             <div className={styles.senderMeta}>
                                 <h4 className={styles.senderName}>{currentMessage.senderName}</h4>
                                 <span className={styles.senderRole}>{currentMessage.senderRole}</span>
