@@ -9,6 +9,7 @@ import com.google.api.client.json.gson.GsonFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.Base64;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -24,6 +25,8 @@ public class GoogleAuthService {
         this.clientId = clientId;
         this.verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), new GsonFactory())
                 .setAudience(Collections.singletonList(clientId))
+                // Allow up to 5 minutes clock skew (Render free tier can have drift)
+                .setAcceptableTimeSkewSeconds(300)
                 .build();
     }
 
@@ -57,8 +60,11 @@ public class GoogleAuthService {
                         .build();
 
                 return Optional.of(userRepository.save(newUser));
+            } else {
+                System.err.println("[GoogleAuth] Token verification returned null — token may be expired, malformed, or audience mismatch. ClientId=" + clientId);
             }
         } catch (Exception e) {
+            System.err.println("[GoogleAuth] Exception during token verification: " + e.getMessage());
             e.printStackTrace();
         }
         return Optional.empty();
