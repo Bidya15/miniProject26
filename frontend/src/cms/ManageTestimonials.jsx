@@ -10,6 +10,7 @@ export default function ManageTestimonials() {
     const [content, setContent] = useState("");
     const [img, setImg] = useState("");
     const [loading, setLoading] = useState(false);
+    const [editingId, setEditingId] = useState(null);
 
     useEffect(() => {
         loadData();
@@ -28,22 +29,45 @@ export default function ManageTestimonials() {
         e.preventDefault();
         setLoading(true);
         try {
-            await api.post("/testimonials", {
+            const payload = {
                 authorName,
                 batchYear,
                 content,
                 avatarUrl: img
-            });
+            };
+            if (editingId) {
+                await api.put(`/testimonials/${editingId}`, payload);
+            } else {
+                await api.post("/testimonials", payload);
+            }
             setAuthorName("");
             setBatchYear("");
             setContent("");
             setImg("");
+            setEditingId(null);
             loadData();
         } catch (err) {
             console.error(err);
         } finally {
             setLoading(false);
         }
+    }
+
+    function handleEdit(t) {
+        setEditingId(t.id);
+        setAuthorName(t.authorName || "");
+        setBatchYear(t.batchYear || "");
+        setContent(t.content || "");
+        setImg(t.avatarUrl || "");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function cancelEdit() {
+        setEditingId(null);
+        setAuthorName("");
+        setBatchYear("");
+        setContent("");
+        setImg("");
     }
 
     async function deleteItem(id) {
@@ -58,7 +82,7 @@ export default function ManageTestimonials() {
 
     return (
         <div className={s.innerCard}>
-            <h3 className={s.cardTitle}>💬 Manage Testimonials</h3>
+            <h3 className={s.cardTitle}>{editingId ? "✏️ Edit Testimonial" : "💬 Manage Testimonials"}</h3>
 
             <form className={s.formGrid} onSubmit={handleSubmit} style={{ marginBottom: "30px" }}>
                 <div className={s.formGroup}>
@@ -77,10 +101,15 @@ export default function ManageTestimonials() {
                     <label className={s.label}>Author Avatar</label>
                     <ImageUpload label="Upload Avatar" onImageChange={setImg} currentImage={img} />
                 </div>
-                <div style={{ gridColumn: "1 / -1" }}>
+                <div style={{ gridColumn: "1 / -1", display: "flex", gap: "10px" }}>
                     <button className={s.btnPrimary} type="submit" disabled={loading}>
-                        {loading ? "Adding..." : "Add Testimonial"}
+                        {loading ? "Processing..." : (editingId ? "Update Testimonial" : "Add Testimonial")}
                     </button>
+                    {editingId && (
+                        <button className={s.btnOutline} type="button" onClick={cancelEdit}>
+                            Cancel
+                        </button>
+                    )}
                 </div>
             </form>
 
@@ -107,7 +136,8 @@ export default function ManageTestimonials() {
                                     <div style={{ fontWeight: 600 }}>{m.authorName}</div>
                                     <div style={{ fontSize: 11, color: "var(--gray-500)" }}>{m.batchYear}</div>
                                 </td>
-                                <td>
+                                <td style={{ display: "flex", gap: "10px" }}>
+                                    <button className={s.btnPrimary} style={{ padding: '6px 12px', fontSize: '12px' }} onClick={() => handleEdit(m)}>Edit</button>
                                     <button className={s.btnDanger} onClick={() => deleteItem(m.id)}>Remove</button>
                                 </td>
                             </tr>

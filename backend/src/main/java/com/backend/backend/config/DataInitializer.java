@@ -29,7 +29,7 @@ public class DataInitializer implements CommandLineRunner {
                         }
                 });
 
-                User superAdmin = userRepository.findByEmail("bidya@gmail.com").orElse(null);
+                User superAdmin = userRepository.findByEmail("superadmin@college.edu").orElse(null);
                 if (superAdmin != null) {
                         boolean changed = false;
                         if (superAdmin.getRole() != User.Role.ROLE_SUPER_ADMIN) {
@@ -51,7 +51,7 @@ public class DataInitializer implements CommandLineRunner {
                 } else {
                         User seededSuperAdmin = User.builder()
                                         .name("Super Admin")
-                                        .email("bidya@gmail.com")
+                                        .email("superadmin@college.edu")
                                         .password(passwordEncoder.encode("SuperAdmin@123"))
                                         .role(User.Role.ROLE_SUPER_ADMIN)
                                         .status(User.Status.APPROVED)
