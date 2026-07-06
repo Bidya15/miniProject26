@@ -1084,10 +1084,13 @@
     font-weight: 700;
     text-decoration: none;
     transition: color 0.15s;
+    position: relative;
+    z-index: 20;
 }
 
 .cardLink:hover {
     color: var(--home-violet);
+    text-decoration: underline;
 }
 
 /* ── Snap Slider ──────────────────────────────────────── */

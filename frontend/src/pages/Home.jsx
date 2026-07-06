@@ -586,7 +586,12 @@ function CoordinatorsSection() {
                                     <div className={styles.alumniRole}>{currentCoord.role}</div>
                                     <p className={styles.alumniBio}>{currentCoord.department}</p>
                                     {currentCoord.linkedInUrl && (
-                                        <a href={currentCoord.linkedInUrl} target="_blank" rel="noreferrer" className={styles.cardLink}>
+                                        <a
+                                            href={currentCoord.linkedInUrl.startsWith('http') ? currentCoord.linkedInUrl : `https://${currentCoord.linkedInUrl}`}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className={styles.cardLink}
+                                        >
                                             LinkedIn ↗
                                         </a>
                                     )}
