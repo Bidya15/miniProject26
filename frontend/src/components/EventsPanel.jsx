@@ -344,8 +344,8 @@ function EventsPanel({
                     return (
                         <motion.div
                             key={ev.id}
-                            className={`${styles.timelineItem} ${isEven ? styles.left : styles.right}`}
-                            initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                            className={`${styles.timelineItem} ${isCompact ? styles.left : (isEven ? styles.left : styles.right)}`}
+                            initial={{ opacity: 0, x: (isCompact || isEven) ? -50 : 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}

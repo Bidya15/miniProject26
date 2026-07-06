@@ -2005,7 +2005,7 @@
     }
 
     .macbookCardSingle {
-        transform: scale(0.65);
+        transform: translateY(-50%) scale(0.65);
     }
 
     .alumniAvatarWrapperMacbook {
@@ -2030,7 +2030,7 @@
     }
 
     .macbookCardSingle {
-        transform: scale(0.50);
+        transform: translateY(-50%) scale(0.50);
     }
 
     .alumniAvatarWrapperMacbook {
