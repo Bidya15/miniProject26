@@ -921,12 +921,11 @@
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 50%;
     background: transparent;
     border: none;
     box-shadow: none;
     padding: 0;
-    transform: translateY(-50%) scale(0.80);
+    transform: scale(0.80);
     /* Bump size inside macbook */
     z-index: 2;
 }
