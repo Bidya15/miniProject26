@@ -65,6 +65,7 @@ export default function AdminProfile() {
     if (!editing) {
         return (
             <div className={d.innerCard}>
+                <div className={d.swipeIndicator}>← Swipe to see more options →</div>
                 <DraggableBox className={d.profileSubnav}>
                     {[
                         { id: 'overview', label: 'Admin Profile', icon: '👤' },

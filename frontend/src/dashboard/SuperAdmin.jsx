@@ -75,6 +75,7 @@ export function ManageAdmins() {
                         <p className={styles.maCardSub}>Assign an Admin role or promote a Department Admin to Super Admin</p>
 
                         <form onSubmit={handleAssign} className={styles.maForm}>
+                            <div className={styles.swipeIndicator}>← Swipe to see more options →</div>
                             <div className={styles.profileSubnav} style={{ marginBottom: '16px', borderBottom: '1px solid var(--border)' }}>
                                 <button
                                     type="button"

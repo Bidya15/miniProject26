@@ -30,6 +30,27 @@
     overflow-x: auto;
 }
 
+.swipeIndicator {
+    display: none;
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .swipeIndicator {
+        display: block;
+        animation: pulseFade 2s infinite ease-in-out;
+    }
+}
+
+@keyframes pulseFade {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
 .subnavBtn {
     display: flex;
     align-items: center;
