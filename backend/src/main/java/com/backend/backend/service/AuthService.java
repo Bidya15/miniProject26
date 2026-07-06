@@ -133,6 +133,13 @@ public class AuthService {
                                         "Your account is pending approval or has been suspended by the administrators.");
                 }
 
+                if (request.getRole() != null && !request.getRole().isEmpty()) {
+                        String expectedRole = "ROLE_" + request.getRole();
+                        if (!user.getRole().name().equals(expectedRole)) {
+                                throw new RuntimeException("Please sign in with the account that matches the selected role.");
+                        }
+                }
+
                 if (user.getRole() != User.Role.ROLE_SUPER_ADMIN) {
                         if (request.getDepartment() == null || request.getDepartment().trim().isEmpty()) {
                                 throw new RuntimeException("Please select your branch.");
@@ -189,6 +196,13 @@ public class AuthService {
                 if (user.getStatus() != User.Status.APPROVED) {
                         throw new RuntimeException(
                                         "Your account is pending approval or has been suspended by the administrators.");
+                }
+
+                if (request.getRole() != null && !request.getRole().isEmpty()) {
+                        String expectedRole = "ROLE_" + request.getRole();
+                        if (!user.getRole().name().equals(expectedRole)) {
+                                throw new RuntimeException("Please sign in with the account that matches the selected role.");
+                        }
                 }
 
                 if (user.getRole() != User.Role.ROLE_SUPER_ADMIN) {

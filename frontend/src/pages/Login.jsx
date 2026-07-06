@@ -22,7 +22,7 @@ export default function Login() {
         if (!email.trim() || !pass) return notify("Please enter both email and password", "err", true);
         if (role !== "SUPER_ADMIN" && !branch) return notify("Please select your branch", "err", true);
         setBusy(true);
-        const res = await login(email.trim(), pass, role === "SUPER_ADMIN" ? "" : branch);
+        const res = await login(email.trim(), pass, role === "SUPER_ADMIN" ? "" : branch, role);
         setBusy(false);
         if (res.ok) {
             if (res.otpRequired) setStep("otp-verify");

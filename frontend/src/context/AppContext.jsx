@@ -524,9 +524,9 @@ export function AppProvider({ children }) {
     }
 
     /* ── Auth ─────────────────────────────────────────── */
-    async function login(email, password, department) {
+    async function login(email, password, department, role) {
         try {
-            const res = await api.post("/auth/login", { email, password, department });
+            const res = await api.post("/auth/login", { email, password, department, role });
             if (res.data.status === "OTP_REQUIRED") {
                 notify("Login initiated. Please enter the OTP sent to your email.", "ok", true);
                 return { ok: true, otpRequired: true, email: res.data.email };

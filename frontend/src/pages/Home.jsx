@@ -286,7 +286,7 @@ function LoginPanel({ onClose }) {
         e.preventDefault();
         if (role !== "SUPER_ADMIN" && !branch) return setErr("Please choose a branch/department");
         setErr(""); setBusy(true);
-        const res = await login(email.trim(), pass, role === "SUPER_ADMIN" ? "" : branch);
+        const res = await login(email.trim(), pass, role === "SUPER_ADMIN" ? "" : branch, role);
         setBusy(false);
         if (res.ok) {
             if (res.otpRequired) {
