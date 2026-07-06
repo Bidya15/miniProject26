@@ -68,7 +68,7 @@ export default function ImageUpload({
         const reader = new FileReader();
         reader.onload = (e) => {
           setPreview(e.target.result);
-          onImageChange(e.target.result, file);
+          if (onImageChange) onImageChange(e.target.result, file);
           setIsUploading(false);
         };
         reader.readAsDataURL(file);
@@ -77,7 +77,7 @@ export default function ImageUpload({
         const reader = new FileReader();
         reader.onload = (e) => {
           setPreview(`PDF: ${file.name}`);
-          onImageChange(e.target.result, file); // Send Base64 string
+          if (onImageChange) onImageChange(e.target.result, file); // Send Base64 string
           setIsUploading(false);
         };
         reader.readAsDataURL(file);
@@ -90,12 +90,12 @@ export default function ImageUpload({
 
   const handleUrlChange = (url) => {
     setPreview(url);
-    onImageChange(url);
+    if (onImageChange) onImageChange(url);
   };
 
   const removeFile = () => {
     setPreview("");
-    onImageChange("");
+    if (onImageChange) onImageChange("");
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }

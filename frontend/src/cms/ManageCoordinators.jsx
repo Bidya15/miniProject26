@@ -87,7 +87,7 @@ export default function ManageCoordinators() {
                         <div className={styles.fGroup}>
                             <ImageUpload
                                 label="Upload Image or Provide URL"
-                                onUpload={(url) => setForm({ ...form, imageUrl: url })}
+                                onImageChange={(url) => setForm({ ...form, imageUrl: url })}
                                 currentImage={form.imageUrl}
                             />
                         </div>

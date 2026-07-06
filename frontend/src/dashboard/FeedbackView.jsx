@@ -129,7 +129,7 @@ const FeedbackView = () => {
                             <label className={s.formLabel}>Display Picture (Optional)</label>
                             <ImageUpload
                                 label="Update Display Photo"
-                                onUpload={url => setFormData({ ...formData, avatarUrl: url })}
+                                onImageChange={url => setFormData({ ...formData, avatarUrl: url })}
                                 currentImage={formData.avatarUrl}
                             />
                         </div>
