@@ -18,7 +18,7 @@ export default function ManageNotableAlumni() {
                 name: "",
                 role: "",
                 bio: "",
-                avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a"
+                avatar: ""
             });
         }
     }

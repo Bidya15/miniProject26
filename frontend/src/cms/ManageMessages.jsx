@@ -18,7 +18,7 @@ export default function ManageMessages() {
                 senderName: "",
                 senderRole: "Head of Department (HOD), CSE",
                 content: "",
-                imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+                imageUrl: "",
                 sortOrder: messageDeskItems.length + 1,
                 id: null
             });

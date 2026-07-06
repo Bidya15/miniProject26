@@ -783,7 +783,7 @@ function TestimonialsSlider() {
                         >
                             <div className={styles.testimonialAvatarWrap}>
                                 <img
-                                    src={currentCard.avatarUrl || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop"}
+                                    src={currentCard.avatarUrl || "/aec_logo_v1.png"}
                                     alt={currentCard.authorName}
                                     className={styles.testimonialAvatar}
                                 />
@@ -965,7 +965,7 @@ export default function Home() {
             setNewsEdit({ ...item });
         } else {
             setNewsModal('add');
-            setNewsEdit({ tag: "Achievement", title: "", date: new Date().toISOString().slice(0, 10), excerpt: "", image: "https://images.unsplash.com/photo-1523240715630-97370d18229a" });
+            setNewsEdit({ tag: "Achievement", title: "", date: new Date().toISOString().slice(0, 10), excerpt: "", image: "" });
         }
     }
 
@@ -992,7 +992,7 @@ export default function Home() {
             setAlumniEdit({ ...alumnus });
         } else {
             setAlumniModal('add');
-            setAlumniEdit({ name: "", role: "", bio: "", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a" });
+            setAlumniEdit({ name: "", role: "", bio: "", avatar: "" });
         }
     }
 

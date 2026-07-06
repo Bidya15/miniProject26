@@ -94,7 +94,7 @@ export function AppProvider({ children }) {
     // cmsLoading: true while the initial CMS fetch is in-flight
     const [cmsLoading, setCmsLoading] = useState(true);
     const [footerConfig, setFooterConfig] = useState({
-        appName: "AEC Alumni Portal",
+        appName: "AeciansConnect",
         appLogo: appLogoAsset,
         email: "cse@aec.ac.in",
         phone: "+91 73990 14471",

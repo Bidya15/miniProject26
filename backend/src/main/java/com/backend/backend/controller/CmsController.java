@@ -166,7 +166,7 @@ public class CmsController {
                     .address("CSE Department, Assam Engineering College, Jalukbari, Guwahati, Assam 781013")
                     .officeHours("Mon–Fri, 9 AM – 5 PM")
                     .mapUrl("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.082504627443!2d91.6617585!3d26.1421292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a4583182f6d97%3A0x851177d2f3e0b8c6!2sComputer%20Science%20and%20Engineering%20Department%2C%20Assam%20Engineering%20College!5e0!3m2!1sen!2sin!4v1709121743000!5m2!1sen!2sin")
-                    .appName("AEC Alumni Portal")
+                    .appName("AeciansConnect")
                     .appLogo("/aec_logo_v1.png")
                     .build());
         }
@@ -240,11 +240,7 @@ public class CmsController {
                     .titleGradient("Give Back.")
                     .subtext(
                             "AecianConnect bridges students with alumni for mentorship, referrals, jobs, and real-world guidance — all on one platform.")
-                    .bgImages(List.of(
-                            "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&auto=format&fit=crop",
-                            "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&auto=format&fit=crop",
-                            "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=1600&auto=format&fit=crop",
-                            "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&auto=format&fit=crop"))
+                    .bgImages(List.of())
                     .build());
         }
         return ResponseEntity.ok(configs.get(0));

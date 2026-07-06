@@ -19,7 +19,7 @@ export default function ManageNews() {
                 title: "",
                 date: new Date().toISOString().slice(0, 10), // ISO format: YYYY-MM-DD
                 excerpt: "",
-                image: "https://images.unsplash.com/photo-1523240715630-97370d18229a"
+                image: ""
             });
         }
     }
