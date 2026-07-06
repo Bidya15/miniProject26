@@ -558,21 +558,30 @@ function CoordinatorsSection() {
                                     transition={{ duration: 0.4, ease: "anticipate" }}
                                     className={`${styles.alumniCard} ${styles.alumniCardActive} ${styles.macbookCardSingle}`}
                                 >
-                                    <div className={styles.alumniAvatarWrapperMacbook}>
-                                        <img
-                                            src={currentCoord.imageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(currentCoord.name)}&size=400&background=random`}
-                                            alt={currentCoord.name}
-                                            className={styles.alumniAvatar}
-                                            style={{ borderRadius: '16px' }}
-                                            draggable="false"
-                                        />
-                                        {isSuper && (
-                                            <div className={styles.cardActionsOverlay}>
-                                                <button className={styles.actionBtnSmall} onClick={(e) => { e.stopPropagation(); startCoordEdit(currentCoord); }}>✎</button>
-                                                <button className={`${styles.actionBtnSmall} ${styles.del}`} onClick={(e) => { e.stopPropagation(); handleRemoveCoordinator(currentCoord.id); }}>✕</button>
+                                    {currentCoord.imageUrl ? (
+                                        <div className={styles.alumniAvatarWrapperMacbook}>
+                                            <img
+                                                src={currentCoord.imageUrl}
+                                                alt={currentCoord.name}
+                                                className={styles.alumniAvatar}
+                                                style={{ borderRadius: '16px' }}
+                                                draggable="false"
+                                            />
+                                            {isSuper && (
+                                                <div className={styles.cardActionsOverlay}>
+                                                    <button className={styles.actionBtnSmall} onClick={(e) => { e.stopPropagation(); startCoordEdit(currentCoord); }}>✏️</button>
+                                                    <button className={`${styles.actionBtnSmall} ${styles.del}`} onClick={(e) => { e.stopPropagation(); handleRemoveCoordinator(currentCoord.id); }}>🗑️</button>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        isSuper && (
+                                            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '16px' }}>
+                                                <button className={styles.actionBtnSmall} onClick={(e) => { e.stopPropagation(); startCoordEdit(currentCoord); }}>✏️</button>
+                                                <button className={`${styles.actionBtnSmall} ${styles.del}`} onClick={(e) => { e.stopPropagation(); handleRemoveCoordinator(currentCoord.id); }}>🗑️</button>
                                             </div>
-                                        )}
-                                    </div>
+                                        )
+                                    )}
                                     <h3 className={styles.alumniName}>{currentCoord.name}</h3>
                                     <div className={styles.alumniRole}>{currentCoord.role}</div>
                                     <p className={styles.alumniBio}>{currentCoord.department}</p>
