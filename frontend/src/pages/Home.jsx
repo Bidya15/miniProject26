@@ -592,6 +592,27 @@ function CoordinatorsSection() {
                                     )}
                                 </motion.div>
                             </AnimatePresence>
+
+                            {/* Mobile nav row — only visible on mobile via CSS */}
+                            {coordinators.length > 1 && (
+                                <div className={styles.mobileNavRow}>
+                                    <button
+                                        className={styles.mobileNavBtn}
+                                        onClick={() => { prev(); resetAuto(); }}
+                                        aria-label="Previous Coordinator"
+                                    >‹ Prev</button>
+                                    <span className={styles.mobileNavDots}>
+                                        {coordinators.map((_, i) => (
+                                            <span key={i} className={`${styles.mobileNavDot} ${i === index ? styles.mobileNavDotActive : ''}`} />
+                                        ))}
+                                    </span>
+                                    <button
+                                        className={styles.mobileNavBtn}
+                                        onClick={() => { next(); resetAuto(); }}
+                                        aria-label="Next Coordinator"
+                                    >Next ›</button>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className={styles.macbookBase}>
