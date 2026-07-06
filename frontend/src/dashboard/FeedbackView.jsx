@@ -195,7 +195,7 @@ const FeedbackView = () => {
                                         </div>
                                     )}
                                     <div className={s.profileTop} style={{ border: 'none', padding: 0, marginBottom: '12px' }}>
-                                        {t.avatarUrl && t.avatarUrl !== "/aec_logo_v1.webp" ? (
+                                        {t.avatarUrl && t.avatarUrl !== "/aec_logo_v1.png" ? (
                                             <img src={t.avatarUrl} alt={t.authorName} style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }} />
                                         ) : (
                                             <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'var(--indigo-l)', color: 'var(--indigo-d)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>

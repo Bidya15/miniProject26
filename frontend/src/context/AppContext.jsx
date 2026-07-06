@@ -1,8 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../utils/api";
 import axios from "axios";
-// Logo served directly from /public — no JS bundle import needed
-const APP_LOGO_URL = "/aec_logo_v1.webp";
+import appLogoAsset from "../assets/image.png";
 
 export const DEPARTMENTS = [
     "Civil Engineering",
@@ -96,7 +95,7 @@ export function AppProvider({ children }) {
     const [cmsLoading, setCmsLoading] = useState(true);
     const [footerConfig, setFooterConfig] = useState({
         appName: "AeciansConnect",
-        appLogo: APP_LOGO_URL,
+        appLogo: appLogoAsset,
         email: "cse@aec.ac.in",
         phone: "+91 73990 14471",
         address: "CSE Department, Assam Engineering College, Jalukbari, Guwahati, Assam 781013",
@@ -432,7 +431,7 @@ export function AppProvider({ children }) {
             const data = res.data;
             // Force the high-fidelity transparent logo if the backend is stuck on the old asset
             if (!data.appLogo || data.appLogo.includes("image.png") || data.appLogo.includes("assets/")) {
-                data.appLogo = APP_LOGO_URL;
+                data.appLogo = "/aec_logo_v1.png";
             }
             setFooterConfig(data);
             notify("Footer settings updated!", "ok", true);
