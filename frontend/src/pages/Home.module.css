@@ -2057,65 +2057,60 @@
         border-radius: 20px;
     }
 
-    /* --- Coordinator Macbook: hide frame on mobile, show card directly --- */
+    /* --- Coordinator Macbook: strip chrome on mobile, show card directly --- */
     .macbookWrapper {
         display: block;
         padding: 0;
         margin-top: 0;
     }
 
-    .macbookLid,
-    .macbookBase,
+    /* Keep macbookLid as container but remove ALL visual styling */
+    .macbookLid {
+        width: 100%;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        aspect-ratio: unset !important;
+        height: auto !important;
+        transform-origin: unset;
+    }
+
+    /* Hide only the decorative pieces */
     .macbookCamera,
-    .macbookBottomShadow {
-        display: none;
+    .macbookBase,
+    .macbookBottomShadow,
+    .macbookArrowL,
+    .macbookArrowR {
+        display: none !important;
     }
 
     .macbookScreen {
         width: 100%;
-        height: auto;
-        min-height: 260px;
-        overflow: visible;
-        background: transparent;
+        height: auto !important;
+        overflow: visible !important;
+        background: transparent !important;
         display: block;
         border-radius: 0;
+        justify-content: unset;
+        align-items: unset;
     }
 
     .macbookCardSingle {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        transform: none;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
         width: 100%;
         max-width: 100%;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-        padding: 28px 24px;
+        background: var(--surface) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 20px !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.10) !important;
+        padding: 28px 24px !important;
         text-align: center;
-    }
-
-    .macbookArrow {
-        display: flex;
-        position: static;
-        transform: none;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        color: var(--gray-700);
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        font-size: 20px;
-        padding: 0;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .macbookArrow:hover {
-        transform: none;
-        background: var(--gray-100);
     }
 
     .alumniAvatarWrapperMacbook {
