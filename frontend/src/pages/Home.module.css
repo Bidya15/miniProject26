@@ -1998,6 +1998,20 @@
         padding: 30px 24px;
         border-radius: 20px;
     }
+
+    .macbookLid {
+        padding: 12px 12px 16px 12px;
+        width: 95%;
+    }
+
+    .macbookCardSingle {
+        transform: scale(0.65);
+    }
+
+    .alumniAvatarWrapperMacbook {
+        width: 80px;
+        height: 80px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2009,6 +2023,19 @@
     .homeSection, 
     .homeSectionAlt {
         padding: 40px 16px;
+    }
+
+    .macbookLid {
+        padding: 8px 8px 12px 8px;
+    }
+
+    .macbookCardSingle {
+        transform: scale(0.50);
+    }
+
+    .alumniAvatarWrapperMacbook {
+        width: 70px;
+        height: 70px;
     }
 
     .sectionTitle {
