@@ -40,9 +40,10 @@ public class DataInitializer implements CommandLineRunner {
                                 superAdmin.setStatus(User.Status.APPROVED);
                                 changed = true;
                         }
-                        // Force password update to ensure login works in production
-                        superAdmin.setPassword(passwordEncoder.encode("SuperAdmin@123"));
-                        changed = true;
+                        if (superAdmin.getPassword() == null || superAdmin.getPassword().isBlank()) {
+                                superAdmin.setPassword(passwordEncoder.encode("SuperAdmin@123"));
+                                changed = true;
+                        }
 
                         if (changed) {
                                 userRepository.save(superAdmin);
