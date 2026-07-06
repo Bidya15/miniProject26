@@ -133,11 +133,13 @@ public class AuthService {
                                         "Your account is pending approval or has been suspended by the administrators.");
                 }
 
-                if (request.getRole() != null && !request.getRole().isEmpty()) {
-                        String expectedRole = "ROLE_" + request.getRole();
-                        if (!user.getRole().name().equals(expectedRole)) {
-                                throw new RuntimeException("Please sign in with the account that matches the selected role.");
-                        }
+                if (request.getRole() == null || request.getRole().isEmpty()) {
+                        throw new RuntimeException("Missing role selection. Please select the correct login tab (Alumni/Dept-Admin/Super Admin) and try again.");
+                }
+
+                String expectedRole = "ROLE_" + request.getRole();
+                if (!user.getRole().name().equals(expectedRole)) {
+                        throw new RuntimeException("Please sign in with the account that matches the selected role.");
                 }
 
                 if (user.getRole() != User.Role.ROLE_SUPER_ADMIN) {
@@ -198,11 +200,13 @@ public class AuthService {
                                         "Your account is pending approval or has been suspended by the administrators.");
                 }
 
-                if (request.getRole() != null && !request.getRole().isEmpty()) {
-                        String expectedRole = "ROLE_" + request.getRole();
-                        if (!user.getRole().name().equals(expectedRole)) {
-                                throw new RuntimeException("Please sign in with the account that matches the selected role.");
-                        }
+                if (request.getRole() == null || request.getRole().isEmpty()) {
+                        throw new RuntimeException("Missing role selection. Please select the correct login tab (Alumni/Dept-Admin/Super Admin) and try again.");
+                }
+
+                String expectedRole = "ROLE_" + request.getRole();
+                if (!user.getRole().name().equals(expectedRole)) {
+                        throw new RuntimeException("Please sign in with the account that matches the selected role.");
                 }
 
                 if (user.getRole() != User.Role.ROLE_SUPER_ADMIN) {
