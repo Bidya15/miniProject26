@@ -184,8 +184,8 @@ export function AppProvider({ children }) {
                 { key: 'socials', url: "/cms/social-links", setter: setSocialLinks },
                 {
                     key: 'footer', url: "/cms/footer-config", setter: (data) => {
-                        // Force the bundled transparent logo asset
-                        data.appLogo = appLogoAsset;
+                        // Keep the public webp logo — don't let backend override it with the old PNG
+                        data.appLogo = APP_LOGO_URL;
                         setFooterConfig(data);
                     }
                 },
@@ -217,7 +217,16 @@ export function AppProvider({ children }) {
                 setCmsLoading(false);
             }
         }
-        fetchCmsData();
+
+        // ── Defer CMS fetch until after first paint ──────────────────────
+        // The app renders immediately with built-in default values;
+        // CMS data from the server enhances the UI once the browser is idle.
+        // This prevents 9 blocking API calls from delaying the initial render.
+        const schedule = typeof requestIdleCallback === 'function'
+            ? (cb) => requestIdleCallback(cb, { timeout: 2000 })
+            : (cb) => setTimeout(cb, 100);
+
+        schedule(() => fetchCmsData());
     }, []);
 
     useEffect(() => {

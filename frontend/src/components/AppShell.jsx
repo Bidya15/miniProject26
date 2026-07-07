@@ -164,8 +164,7 @@ const toastVariants = {
 
 // ─── App Shell ───────────────────────────────────────
 function AppShell() {
-    const { page, currentUser, toast, tab, sidebarOpen, theme, toggleTheme } = useApp();
-    const { toggleSidebar } = useApp();
+    const { page, currentUser, toast, tab, sidebarOpen, theme, toggleTheme, toggleSidebar } = useApp();
 
     // Always scroll to top on page or tab change
     useEffect(() => {

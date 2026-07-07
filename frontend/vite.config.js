@@ -1,9 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { compression } from 'vite-plugin-compression2'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // Pre-compress every JS/CSS asset with gzip (universally supported)
+    compression({
+      algorithm: 'gzip',
+      exclude: [/\.(png|jpe?g|webp|gif|ico|svg)$/],
+      threshold: 1024, // only compress files > 1 KB
+    }),
+    // Also pre-compress with Brotli (better ratio — nginx serves if available)
+    compression({
+      algorithm: 'brotliCompress',
+      exclude: [/\.(png|jpe?g|webp|gif|ico|svg)$/],
+      threshold: 1024,
+    }),
+  ],
 
   server: {
     port: 5173,
@@ -20,8 +35,12 @@ export default defineConfig({
   },
 
   build: {
+    // Target modern browsers — reduces polyfill overhead
+    target: 'esnext',
     // Warn only for chunks over 500KB
     chunkSizeWarningLimit: 500,
+    // Split CSS per chunk so each page only loads its own CSS
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {

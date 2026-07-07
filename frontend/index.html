@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/src/assets/image.png" />
+  <!-- Use the .webp logo from /public (170 KB vs 766 KB PNG) -->
+  <link rel="icon" type="image/webp" href="/aec_logo_v1.webp" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups" />
   <meta name="description"
@@ -11,8 +12,15 @@
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#6366f1" />
   <title>AECiansConnect – College Alumni Portal</title>
+
+  <!-- Warm up DNS for the backend API before the first fetch fires -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+  <!-- Preconnect for Google Fonts (establishes TLS early) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <!-- Non-blocking font load: preload trick defers CSS until after paint -->
   <link
     rel="preload"
