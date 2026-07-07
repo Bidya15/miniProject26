@@ -5,9 +5,19 @@
  *  - HTML (navigation requests)  → Network-first (always fresh)
  *  - JS / CSS / fonts / images   → Cache-first (instant on repeat visits)
  *  - API calls (/api/*)          → Network-only (never cache dynamic data)
+ *
+ * Keep-Alive:
+ *  - Pings the backend health endpoint every 10 minutes via a periodic
+ *    alarm to prevent Render Free Tier cold starts (50–60 second spin-up).
  */
 
-const CACHE_NAME = 'aecians-static-v3';
+const CACHE_NAME = 'aecians-static-v4';
+
+// ─── Backend health endpoint to keep warm ────────────
+// Simple /api/health endpoint — returns 200 OK with no auth required.
+// nginx proxies /api → backend:8080/api, so this goes through correctly.
+const KEEPALIVE_URL = '/api/health';
+const KEEPALIVE_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes
 
 // ─── Install: pre-cache the shell ────────────────────
 self.addEventListener('install', (event) => {
@@ -19,7 +29,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// ─── Activate: clear old caches ──────────────────────
+// ─── Activate: clear old caches + start keepalive ────
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
@@ -31,7 +41,30 @@ self.addEventListener('activate', (event) => {
         )
       )
       .then(() => self.clients.claim())
+      .then(() => scheduleKeepalive())
   );
+});
+
+// ─── Keepalive: ping backend every 10 min ────────────
+function pingBackend() {
+  fetch(KEEPALIVE_URL, { method: 'GET', cache: 'no-store' })
+    .then(() => console.log('[SW] Backend keepalive ping OK'))
+    .catch(() => console.log('[SW] Backend keepalive ping failed (offline?)'));
+}
+
+function scheduleKeepalive() {
+  // Ping immediately on SW activation, then every 10 minutes
+  pingBackend();
+  setInterval(pingBackend, KEEPALIVE_INTERVAL_MS);
+}
+
+// ─── Message handler: manual ping trigger ────────────
+// The app sends a 'PING_BACKEND' message when the page loads
+// so we ping immediately on every fresh visit too.
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'PING_BACKEND') {
+    pingBackend();
+  }
 });
 
 // ─── Fetch handler ───────────────────────────────────

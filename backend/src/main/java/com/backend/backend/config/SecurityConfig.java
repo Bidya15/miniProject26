@@ -53,7 +53,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/alumni/public").permitAll()
-                        .requestMatchers("/api/auth/**", "/error").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/health", "/error").permitAll()
                         .requestMatchers("/api/alumni/**")
                         .hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN", "ROLE_ALUMNI")
                         .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN")

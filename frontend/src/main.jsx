@@ -16,12 +16,20 @@ createRoot(document.getElementById("root")).render(
   </StrictMode>,
 );
 
-// Register Service Worker for PWA
+// ─── Register Service Worker (PWA + keepalive) ────────
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("/sw.js")
-      .then((reg) => console.log("Service Worker registered", reg))
+      .then((reg) => {
+        console.log("Service Worker registered", reg);
+        // Trigger an immediate backend ping on every page load.
+        // This wakes the Render backend container as soon as a user visits,
+        // reducing the cold-start wait if the container had just spun down.
+        if (navigator.serviceWorker.controller) {
+          navigator.serviceWorker.controller.postMessage({ type: "PING_BACKEND" });
+        }
+      })
       .catch((err) => console.error("Service Worker registration failed", err));
   });
 }
